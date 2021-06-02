@@ -6,13 +6,13 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function Header() {
   const [isOpen, setisOpen] = useState(false);
-  const [dropopen, setdropopen] = useState(false);
   const { user, signOut } = useAuth();
   const router = useRouter();
 
+  console.log(user);
   const signout = () => {
     signOut();
-    router.push("/");
+    router.reload();
   };
 
   return (
@@ -38,7 +38,7 @@ export default function Header() {
           </div>
 
           <nav
-            className={`flex flex-col relative flex-grow  pb-4 md:pb-0 md:flex md:justify-end md:flex-row ${
+            className={`flex flex-col flex-grow  pb-4 md:pb-0 md:flex md:justify-end md:flex-row ${
               isOpen ? "flex" : "hidden"
             }`}
           >
@@ -61,34 +61,12 @@ export default function Header() {
               Nya funktioner
             </a>
             {user && (
-              <>
-                <button
-                  onClick={() => setdropopen(!dropopen)}
-                  className="relative px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                >
-                  <span className="flex items-center justify-center">
-                    <UserIcon className="w-5 h-5 text-blue-500" />
-                    {user?.email}
-                  </span>
-                </button>
-                {dropopen && (
-                  <div className="absolute w-full mt-2 origin-top-right rounded-md shadow-lg right-2 top-7 md:w-48">
-                    <div className="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
-                      <Link href="/useraccount">
-                        <a className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                          User Account
-                        </a>
-                      </Link>
-                      <button
-                        onClick={signout}
-                        className="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </>
+              <a
+                className="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="/"
+              >
+                <UserIcon className="w-5 h-5 text-blue-500" />
+              </a>
             )}
             {!user && (
               <>

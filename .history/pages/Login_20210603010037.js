@@ -8,10 +8,11 @@ export default function Login() {
   const { user, signOut } = useAuth();
   const router = useRouter();
   useEffect(() => {
+    console.log(user);
     if (user) {
       router.push("/useraccount");
     }
-  }, [user]);
+  }, []);
   return (
     <Layout>
       <main>

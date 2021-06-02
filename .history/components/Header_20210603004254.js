@@ -12,7 +12,7 @@ export default function Header() {
 
   const signout = () => {
     signOut();
-    router.push("/");
+    router.reload();
   };
 
   return (
