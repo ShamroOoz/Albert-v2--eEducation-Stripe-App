@@ -1,43 +1,37 @@
+import Layout from "@/components/Layout";
 import { Formik, Form } from "formik";
 import { initialValues, validationSchemaLogin } from "./Formik/Schmes";
 import FormikControl from "./Formik/FormikControl";
-import { useAuth } from "@/context/AuthContext";
 import { useState, useEffect } from "react";
 import { XCircleIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-export const SignInComp = () => {
-  const { signInWithGoogle, login, signup } = useAuth();
+const forgotpassword = () => {
   const [autherror, setautherror] = useState(null);
-  const [pagestatus, setpagestatus] = useState("");
   const router = useRouter();
 
-  useEffect(() => {
-    setpagestatus(router.pathname);
-  }, []);
-
   const onSubmit = async (values, onSubmitProp) => {
-    try {
-      if (pagestatus === "/login") {
-        await login(values);
-      } else {
-        await signup(values);
-      }
-      onSubmitProp.setSubmitting(false);
-      onSubmitProp.resetForm();
-    } catch (error) {
-      setautherror(error);
-      console.log(error);
-    }
+    console.log(values);
+    //    try {
+    //       await login(values);
+    //      onSubmitProp.setSubmitting(false);
+    //      onSubmitProp.resetForm();
+    //    } catch (error) {
+    //      setautherror(error);
+    //      console.log(error);
+    //    }
   };
-
   return (
     <div className="w-10/12 m-auto my-5 bg-white shadow-xl lg:w-4/12 md:6/12">
       <div className="px-8 py-8 rounded-xl">
         <h1 className="text-2xl font-semibold text-center uppercase">
-          {router.pathname === "/login" ? "Login" : " Register"}
+          Forgot password?
         </h1>
+        <p>
+          It is easy to forget your password. Fill in your e-mail address or
+          telephone number below and we will send you a new password.
+        </p>
 
         {autherror && (
           <div className="mb-2 border-l-8 border-red-900 bg-red-50">
@@ -146,3 +140,5 @@ export const SignInComp = () => {
     </div>
   );
 };
+
+export default forgotpassword;

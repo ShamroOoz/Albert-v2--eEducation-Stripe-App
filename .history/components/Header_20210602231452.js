@@ -9,6 +9,7 @@ export default function Header() {
   const { user, signOut } = useAuth();
   const router = useRouter();
 
+  console.log(username);
   const signout = () => {
     signOut();
     router.reload();
@@ -17,7 +18,10 @@ export default function Header() {
   return (
     <div className="antialiased bg-gray-100 dark-mode:bg-gray-900">
       <div className="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
-        <div className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+        <div
+          x-data="{ open: true }"
+          className="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8"
+        >
           <div className="flex flex-row items-center justify-between p-4">
             <Link href="/">
               <a className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
@@ -75,7 +79,7 @@ export default function Header() {
                   </a>
                 </Link>
                 <Link href="/singup">
-                  <a className="justify-center px-4 py-2 mt-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-full shadow-sm md:mt-0 mt-2inline-flex whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <a className="justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-full shadow-sm mt-2inline-flex whitespace-nowrap hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Singup
                   </a>
                 </Link>

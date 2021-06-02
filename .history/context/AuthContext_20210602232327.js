@@ -27,14 +27,15 @@ function useProvideAuth() {
     let unsubscribe;
 
     if (user) {
-      const ref = firestore.collection("users").doc(user.uid);
-      unsubscribe = ref.onSnapshot((doc) => {
-        setUsername(doc.data()?.username);
-        setloading(false);
+      unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          setUser(user);
+          etloading(false);
+        } else {
+          setUsername(null);
+          setloading(false);
+        }
       });
-    } else {
-      setUsername(null);
-      setloading(false);
     }
 
     return unsubscribe;
@@ -54,8 +55,9 @@ function useProvideAuth() {
   const signup = ({ email, password }) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
-  const sendPasswordResetEmail = ({ email }) => {
-    return auth().sendPasswordResetEmail(email);
+  const sendPasswordResetEmail = (email) => {
+    return;
+    auth().sendPasswordResetEmail(email);
   };
   return {
     signInWithGoogle,

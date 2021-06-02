@@ -88,7 +88,7 @@ export const SignInComp = () => {
                 />
                 {router.pathname === "/login" && (
                   <div className="flex justify-end my-2 text-xs text-gray-600 underline">
-                    <Link href="/forgotpassword">
+                    <Link href="/">
                       <a>Forget Password?</a>
                     </Link>
                   </div>

@@ -55,7 +55,7 @@ function useProvideAuth() {
     return auth.createUserWithEmailAndPassword(email, password);
   };
   const sendPasswordResetEmail = ({ email }) => {
-    return auth().sendPasswordResetEmail(email);
+    console.log(email);
   };
   return {
     signInWithGoogle,

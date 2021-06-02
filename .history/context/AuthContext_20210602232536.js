@@ -23,22 +23,18 @@ function useProvideAuth() {
   const [loading, setloading] = useState(true);
 
   useEffect(() => {
-    // turn off realtime subscription
-    let unsubscribe;
-
-    if (user) {
-      const ref = firestore.collection("users").doc(user.uid);
-      unsubscribe = ref.onSnapshot((doc) => {
-        setUsername(doc.data()?.username);
+    const unsubscribe = auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
         setloading(false);
-      });
-    } else {
-      setUsername(null);
-      setloading(false);
-    }
-
-    return unsubscribe;
-  }, [user]);
+      } else {
+        setUsername(null);
+        setloading(false);
+      }
+    });
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
 
   const signInWithGoogle = async () => {
     return await auth.signInWithPopup(googleAuthProvider);
@@ -54,8 +50,9 @@ function useProvideAuth() {
   const signup = ({ email, password }) => {
     return auth.createUserWithEmailAndPassword(email, password);
   };
-  const sendPasswordResetEmail = ({ email }) => {
-    return auth().sendPasswordResetEmail(email);
+  const sendPasswordResetEmail = (email) => {
+    return;
+    auth().sendPasswordResetEmail(email);
   };
   return {
     signInWithGoogle,

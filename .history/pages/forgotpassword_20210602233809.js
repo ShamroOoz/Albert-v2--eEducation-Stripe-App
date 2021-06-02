@@ -1,37 +1,8 @@
-import { Formik, Form } from "formik";
-import { initialValues, validationSchemaLogin } from "./Formik/Schmes";
-import FormikControl from "./Formik/FormikControl";
 import { useAuth } from "@/context/AuthContext";
-import { useState, useEffect } from "react";
-import { XCircleIcon } from "@heroicons/react/solid";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import Layout from "@/components/Layout";
+import { SignInComp } from "@/components/SignInComp";
 
-export const SignInComp = () => {
-  const { signInWithGoogle, login, signup } = useAuth();
-  const [autherror, setautherror] = useState(null);
-  const [pagestatus, setpagestatus] = useState("");
-  const router = useRouter();
-
-  useEffect(() => {
-    setpagestatus(router.pathname);
-  }, []);
-
-  const onSubmit = async (values, onSubmitProp) => {
-    try {
-      if (pagestatus === "/login") {
-        await login(values);
-      } else {
-        await signup(values);
-      }
-      onSubmitProp.setSubmitting(false);
-      onSubmitProp.resetForm();
-    } catch (error) {
-      setautherror(error);
-      console.log(error);
-    }
-  };
-
+const forgotpassword = () => {
   return (
     <div className="w-10/12 m-auto my-5 bg-white shadow-xl lg:w-4/12 md:6/12">
       <div className="px-8 py-8 rounded-xl">
@@ -146,3 +117,5 @@ export const SignInComp = () => {
     </div>
   );
 };
+
+export default forgotpassword;
