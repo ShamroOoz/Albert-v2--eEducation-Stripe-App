@@ -1,0 +1,58 @@
+import Link from "next/link";
+import styles from "@/styles/Footer.module.css";
+
+export default function Footer() {
+  return (
+    <footer className={styles.footer}>
+      <div class="bg-gray-100">
+        <div class="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-center">
+          <div class="p-5 w-48 ">
+            <div class="text-xs uppercase text-gray-500 font-medium">Home</div>
+          </div>
+          <div class="p-5 w-48 ">
+            <div class="text-xs uppercase text-gray-500 font-medium">
+              Produkt
+            </div>
+            <a class="my-3 block" href="/#">
+              Junior 3-9år <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">
+              Albert 10-16år <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">
+              Nya funktioner <span class="text-teal-600 text-xs p-1">New</span>
+            </a>
+          </div>
+          <div class="p-5 w-48 ">
+            <div class="text-xs uppercase text-gray-500 font-medium">
+              Support
+            </div>
+            <a class="my-3 block" href="/#">
+              Frågor och svar <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">
+              Kontakt<span class="text-teal-600 text-xs p-1"></span>
+            </a>
+          </div>
+          <div class="p-5 w-48 ">
+            <div class="text-xs uppercase text-gray-500 font-medium">
+              Albert
+            </div>
+            <a class="my-3 block" href="/#">
+              Om oss <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">
+              CSR <span class="text-teal-600 text-xs p-1">New</span>
+            </a>
+            <a class="my-3 block" href="/#">
+              Karriär <span class="text-teal-600 text-xs p-1"></span>
+            </a>
+            <a class="my-3 block" href="/#">
+              Blogg<span class="text-teal-600 text-xs p-1"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
