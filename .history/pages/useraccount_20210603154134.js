@@ -5,7 +5,6 @@ import { useEffect, useState, useCallback } from "react";
 import { fetchFromAPI } from "@/helpers/fetchFromAPI";
 import { NEXT_URL } from "@/config/index";
 import { db } from "@/helpers/firebase";
-
 import {
   HomeIcon,
   KeyIcon,
@@ -35,7 +34,6 @@ export default function Useraccount() {
       getSubscriptions();
     }
   }, [user, getSubscriptions]);
-
   const signout = () => {
     signOut();
     router.push("/");
@@ -137,15 +135,15 @@ function UserData(props) {
     return () => unsubscribe();
   }, [user]);
 
+  console.log(subscriptions.length);
   return (
     <>
       <div className="flex items-center justify-center h-screen my-auto overflow-x-hidden overflow-y-auto outline-none min-w-screen focus:outline-none">
         <div className="relative w-full max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl ">
           <div className="justify-center flex-auto p-5 text-center">
             <h2 className="py-4 text-xl font-bold ">
-              {subscriptions.length === 0 && "No active subscriptions "}
-              {subscriptions.length !== 0 &&
-              data?.activePlans == "price_1IuoRsLMgvU1cp6Vs9WYSbFH"
+              {subscriptions.length < 0 && "No active subscriptions "}
+              {data?.activePlans === "price_1IuoRsLMgvU1cp6Vs9WYSbFH"
                 ? "BAS"
                 : "PLUS"}
             </h2>

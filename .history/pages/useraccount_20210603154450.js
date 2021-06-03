@@ -5,7 +5,6 @@ import { useEffect, useState, useCallback } from "react";
 import { fetchFromAPI } from "@/helpers/fetchFromAPI";
 import { NEXT_URL } from "@/config/index";
 import { db } from "@/helpers/firebase";
-
 import {
   HomeIcon,
   KeyIcon,
@@ -35,7 +34,6 @@ export default function Useraccount() {
       getSubscriptions();
     }
   }, [user, getSubscriptions]);
-
   const signout = () => {
     signOut();
     router.push("/");

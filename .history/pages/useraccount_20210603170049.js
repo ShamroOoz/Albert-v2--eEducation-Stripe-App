@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import { useEffect, useState, useCallback } from "react";
 import { fetchFromAPI } from "@/helpers/fetchFromAPI";
+import { AuthCheck } from "reactfire";
 import { NEXT_URL } from "@/config/index";
 import { db } from "@/helpers/firebase";
 
@@ -33,6 +34,8 @@ export default function Useraccount() {
   useEffect(() => {
     if (user) {
       getSubscriptions();
+    } else {
+      router.push("/");
     }
   }, [user, getSubscriptions]);
 

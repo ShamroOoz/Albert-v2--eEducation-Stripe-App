@@ -5,7 +5,6 @@ import { useEffect, useState, useCallback } from "react";
 import { fetchFromAPI } from "@/helpers/fetchFromAPI";
 import { NEXT_URL } from "@/config/index";
 import { db } from "@/helpers/firebase";
-
 import {
   HomeIcon,
   KeyIcon,
@@ -102,11 +101,11 @@ export default function Useraccount() {
             </a>
           </div>
         </nav>
-        <main className="flex flex-col flex-1 bg-gray-100">
-          <div className="flex items-center justify-center mt-8 text-2xl font-bold uppercase ">
+        <main className="flex flex-col flex-1 overflow-y-auto transition duration-500 ease-in-out bg-gray-100">
+          <div className="pt-10 m-auto text-2xl font-bold uppercase">
             Membership
           </div>
-          <>{user?.uid && <UserData getSubscriptions={getSubscriptions} />}</>
+          <div>{user?.uid && <UserData />}</div>
         </main>
       </div>
     </Layout>
@@ -115,12 +114,12 @@ export default function Useraccount() {
 
 function UserData(props) {
   const [data, setData] = useState({});
-  const { user, subscriptions } = useAuth();
   const [loading, setLoading] = useState(false);
+  const { user, subscriptions } = useAuth();
 
   const cancel = async (id) => {
     setLoading(true);
-    await fetchFromAPI(`${NEXT_URL}/subscriptions/` + id, {
+    await fetchFromAPI(`${NEXT_URL}/subscriptions/${id}`, {
       method: "PATCH",
     });
     alert("canceled!");
@@ -132,27 +131,25 @@ function UserData(props) {
   useEffect(() => {
     const unsubscribe = db
       .collection("users")
-      .doc(user?.uid)
+      .doc(user.uid)
       .onSnapshot((doc) => setData(doc.data()));
     return () => unsubscribe();
   }, [user]);
 
   return (
     <>
-      <div className="flex items-center justify-center h-screen my-auto overflow-x-hidden overflow-y-auto outline-none min-w-screen focus:outline-none">
+      <div className="fixed flex items-center justify-center h-screen my-auto overflow-x-hidden overflow-y-auto outline-none min-w-screen focus:outline-none">
         <div className="relative w-full max-w-lg p-5 mx-auto my-auto bg-white shadow-lg rounded-xl ">
-          <div className="justify-center flex-auto p-5 text-center">
-            <h2 className="py-4 text-xl font-bold ">
-              {subscriptions.length === 0 && "No active subscriptions "}
-              {subscriptions.length !== 0 &&
-              data?.activePlans == "price_1IuoRsLMgvU1cp6Vs9WYSbFH"
-                ? "BAS"
-                : "PLUS"}
-            </h2>
+          <div className="">
+            <div className="justify-center flex-auto p-5 text-center">
+              <h2 className="py-4 text-xl font-bold ">
+                {data?.activePlans === "price_1IuoRsLMgvU1cp6Vs9WYSbFH"
+                  ? "BAS"
+                  : "PLUS"}
+              </h2>
 
-            <div className="p-3 mt-2 space-x-4 text-center md:block">
-              {subscriptions.length > 0 &&
-                subscriptions.map((sub) => (
+              <div className="p-3 mt-2 space-x-4 text-center md:block">
+                {subscriptions.map((sub) => (
                   <div key={sub.id}>
                     <p className="px-8 text-sm text-gray-500 ">
                       Next payment of due{" "}
@@ -167,6 +164,7 @@ function UserData(props) {
                     </button>
                   </div>
                 ))}
+              </div>
             </div>
           </div>
         </div>

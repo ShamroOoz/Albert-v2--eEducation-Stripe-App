@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
 import { useEffect, useState, useCallback } from "react";
 import { fetchFromAPI } from "@/helpers/fetchFromAPI";
+
 import { NEXT_URL } from "@/config/index";
 import { db } from "@/helpers/firebase";
 
