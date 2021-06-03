@@ -1,14 +1,9 @@
-import { useRouter } from "next/router";
-
-export const Pricing = ({ plan, status, setPlan }) => {
-  const router = useRouter();
-
-  //
+export const Pricing = ({ plan, status }) => {
   const onClicklistner = () => {
     if (!status) {
-      router.push("/login");
+      console.log("got to login");
     } else {
-      setPlan(plan?.planId);
+      console.log("setup the logic here");
     }
   };
   return (

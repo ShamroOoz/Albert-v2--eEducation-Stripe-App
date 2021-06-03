@@ -124,16 +124,17 @@ export default function Login() {
                         <div className="inline-flex w-16 h-1 bg-indigo-500 rounded-full"></div>
                       </div>
 
-                      <section className="flex items-center justify-center px-4 mt-3 bg-white">
+                      <section className="flex items-center justify-center px-4 bg-white">
                         <div className="w-full max-w-lg p-4 rounded-lg shadow-lg">
-                          <CardElement />
+                          <h3 className="text-lg font-semibold tracking-wide text-gray-700">
+                            Create new account
+                          </h3>
+                          <p className="my-1 text-gray-500">
+                            This will create new account for you.
+                          </p>
                           <div>
-                            <button
-                              type="submit"
-                              disabled={loading}
-                              className="px-4 py-2 mt-5 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200"
-                            >
-                              Subscribe & Pay
+                            <button className="px-4 py-2 mt-2 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200">
+                              Create Account
                             </button>
                           </div>
                         </div>
@@ -144,7 +145,7 @@ export default function Login() {
               </form>
             </>
           ) : (
-            <UserData />
+            <div>Go to dashboard</div>
           )
         ) : (
           <SignInComp />

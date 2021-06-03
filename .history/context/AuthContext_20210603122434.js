@@ -27,9 +27,8 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user] = useAuthState(auth);
-  const [activeplan, setactiveplan] = useState(null);
+  const [cusmtomerId, setcusmtomerId] = useState(null);
   const [loading, setloading] = useState(true);
-  const [subscriptions, setSubscriptions] = useState([]);
 
   useEffect(() => {
     // turn off realtime subscription
@@ -38,13 +37,11 @@ function useProvideAuth() {
     if (user) {
       const ref = db.collection("users").doc(user.uid);
       unsubscribe = ref.onSnapshot((doc) => {
-        setactiveplan(
-          doc.data()?.activePlans == null ? null : doc.data()?.activePlans
-        );
+        setcusmtomerId(doc.data()?.stripeCustomerId);
         setloading(false);
       });
     } else {
-      setactiveplan(null);
+      setcusmtomerId(null);
       setloading(false);
     }
 
@@ -81,9 +78,7 @@ function useProvideAuth() {
     signup,
     sendPasswordResetEmail,
     user,
-    activeplan,
+    cusmtomerId,
     loading,
-    subscriptions,
-    setSubscriptions,
   };
 }

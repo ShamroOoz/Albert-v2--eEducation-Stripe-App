@@ -1,16 +1,7 @@
-import { useRouter } from "next/router";
+import Link from "next/link";
 
-export const Pricing = ({ plan, status, setPlan }) => {
-  const router = useRouter();
-
-  //
-  const onClicklistner = () => {
-    if (!status) {
-      router.push("/login");
-    } else {
-      setPlan(plan?.planId);
-    }
-  };
+export const Pricing = ({ plan, status }) => {
+  console.log(status);
   return (
     <section className="flex flex-col w-full max-w-sm p-12 space-y-6 bg-white rounded-lg shadow-xl">
       <div className="flex-shrink-0">
@@ -51,16 +42,17 @@ export const Pricing = ({ plan, status, setPlan }) => {
       </ul>
 
       <div className="flex-shrink-0 pt-4">
-        <button
-          onClick={onClicklistner}
-          className={`inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-            plan.name == "PLUS"
-              ? "bg-indigo-600 text-white hover:bg-indigo-700"
-              : "hover:bg-indigo-700 hover:text-white"
-          }`}
-        >
-          {`Get ${plan.name}`}
-        </button>
+        <Link href="/login">
+          <a
+            className={`inline-flex items-center justify-center w-full max-w-xs px-4 py-2 transition-colors border rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+              plan.name == "PLUS"
+                ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                : "hover:bg-indigo-700 hover:text-white"
+            }`}
+          >
+            {`Get ${plan.name}`}
+          </a>
+        </Link>
       </div>
     </section>
   );

@@ -96,7 +96,7 @@ export default function Login() {
                   <span className="font-semibold">strategies</span>
                 </h1>
               </div>
-              <div className="flex flex-col items-center justify-center space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
+              <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
                 {plans?.map((plan) => (
                   <Pricing
                     key={plan.id}
@@ -106,45 +106,45 @@ export default function Login() {
                   />
                 ))}
               </div>
-
-              <form onSubmit={handleSubmit} hidden={!plan}>
-                <section className="text-gray-20 ">
-                  <div className="max-w-6xl px-5 py-24 mx-auto ">
-                    <div className="mb-20 text-center">
-                      <h1 className="mb-4 text-4xl font-extrabold leading-10 tracking-tight title-font sm:text-5xl sm:leading-none md:text-6xl">
-                        Payment Gateway
-                      </h1>
-                      <p className="mx-auto text-base leading-relaxed xl:w-2/4 lg:w-3/4">
-                        Normal Card: <code>4242424242424242</code>
-                      </p>
-                      <p className="mx-auto text-base leading-relaxed xl:w-2/4 lg:w-3/4">
-                        3D Secure Card: <code>4000002500003155</code>
-                      </p>
-                      <div className="flex justify-center mt-6">
-                        <div className="inline-flex w-16 h-1 bg-indigo-500 rounded-full"></div>
-                      </div>
-
-                      <section className="flex items-center justify-center px-4 mt-3 bg-white">
-                        <div className="w-full max-w-lg p-4 rounded-lg shadow-lg">
-                          <CardElement />
-                          <div>
-                            <button
-                              type="submit"
-                              disabled={loading}
-                              className="px-4 py-2 mt-5 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200"
-                            >
-                              Subscribe & Pay
-                            </button>
-                          </div>
+              <div class="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none">
+                <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                      <div class="flex flex-col ml-3">
+                        <div class="font-medium leading-none">
+                          Delete Your Acccount ?
                         </div>
-                      </section>
+                        <p class="text-sm text-gray-600 leading-none mt-1">
+                          By deleting your account you will lose your all data
+                        </p>
+                      </div>
                     </div>
+                    <button
+                      mat-icon-button=""
+                      class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full"
+                    >
+                      Delete
+                    </button>
                   </div>
-                </section>
-              </form>
+                </div>
+              </div>
             </>
           ) : (
-            <UserData />
+            <div>Go to dashboard</div>
           )
         ) : (
           <SignInComp />

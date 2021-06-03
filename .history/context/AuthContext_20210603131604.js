@@ -38,9 +38,8 @@ function useProvideAuth() {
     if (user) {
       const ref = db.collection("users").doc(user.uid);
       unsubscribe = ref.onSnapshot((doc) => {
-        setactiveplan(
-          doc.data()?.activePlans == null ? null : doc.data()?.activePlans
-        );
+        console.log(doc.data()?.activePlans);
+        setactiveplan(doc.data()?.activePlans);
         setloading(false);
       });
     } else {

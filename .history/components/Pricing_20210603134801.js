@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export const Pricing = ({ plan, status, setPlan }) => {
+export const Pricing = ({ plan, status }) => {
   const router = useRouter();
 
   //
@@ -8,7 +8,7 @@ export const Pricing = ({ plan, status, setPlan }) => {
     if (!status) {
       router.push("/login");
     } else {
-      setPlan(plan?.planId);
+      console.log("setup the logic here", plan?.planId);
     }
   };
   return (

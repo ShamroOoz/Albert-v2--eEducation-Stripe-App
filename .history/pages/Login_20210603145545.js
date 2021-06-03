@@ -144,7 +144,7 @@ export default function Login() {
               </form>
             </>
           ) : (
-            <UserData />
+            <div>Go to dashboard</div>
           )
         ) : (
           <SignInComp />

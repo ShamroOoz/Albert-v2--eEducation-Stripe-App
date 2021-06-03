@@ -131,7 +131,7 @@ export default function Login() {
                             <button
                               type="submit"
                               disabled={loading}
-                              className="px-4 py-2 mt-5 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200"
+                              className="px-4 py-2 mt-2 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200"
                             >
                               Subscribe & Pay
                             </button>
@@ -144,7 +144,7 @@ export default function Login() {
               </form>
             </>
           ) : (
-            <UserData />
+            <div>Go to dashboard</div>
           )
         ) : (
           <SignInComp />

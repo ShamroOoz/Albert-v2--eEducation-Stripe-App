@@ -3,7 +3,7 @@ export const plans = [
     id: 1,
     name: "BAS",
     discretion: "All the basics for family that are just getting started.",
-    planId: "price_1IuoRsLMgvU1cp6Vs9WYSbFH",
+    plan: "price_1IuoRsLMgvU1cp6Vs9WYSbFH",
     price: {
       monthly: 99,
       annually: 99 * 12 - 199,
@@ -19,7 +19,7 @@ export const plans = [
     id: 2,
     name: "PLUS",
     discretion: "Better for big families that want more users.",
-    planId: "price_1IuoRsLMgvU1cp6VJ5Xw8PxR",
+    plan: "price_1IuoRsLMgvU1cp6VJ5Xw8PxR",
     price: {
       monthly: 169,
       annually: 169 * 12 - 100,

@@ -96,7 +96,7 @@ export default function Login() {
                   <span className="font-semibold">strategies</span>
                 </h1>
               </div>
-              <div className="flex flex-col items-center justify-center space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
+              <div className="flex flex-col items-center justify-center mt-16 space-y-8 lg:flex-row lg:items-stretch lg:space-x-8 lg:space-y-0">
                 {plans?.map((plan) => (
                   <Pricing
                     key={plan.id}
@@ -106,45 +106,29 @@ export default function Login() {
                   />
                 ))}
               </div>
+              <div class="w-screen h-screen flex justify-center items-center bg-gray-100">
+                <form class="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
+                  <p class="mb-5 text-3xl uppercase text-gray-600">Login</p>
+                  <input
+                    type="email"
+                    name="email"
+                    class="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none"
+                    placeholder="Email"
+                    required
+                  />
 
-              <form onSubmit={handleSubmit} hidden={!plan}>
-                <section className="text-gray-20 ">
-                  <div className="max-w-6xl px-5 py-24 mx-auto ">
-                    <div className="mb-20 text-center">
-                      <h1 className="mb-4 text-4xl font-extrabold leading-10 tracking-tight title-font sm:text-5xl sm:leading-none md:text-6xl">
-                        Payment Gateway
-                      </h1>
-                      <p className="mx-auto text-base leading-relaxed xl:w-2/4 lg:w-3/4">
-                        Normal Card: <code>4242424242424242</code>
-                      </p>
-                      <p className="mx-auto text-base leading-relaxed xl:w-2/4 lg:w-3/4">
-                        3D Secure Card: <code>4000002500003155</code>
-                      </p>
-                      <div className="flex justify-center mt-6">
-                        <div className="inline-flex w-16 h-1 bg-indigo-500 rounded-full"></div>
-                      </div>
-
-                      <section className="flex items-center justify-center px-4 mt-3 bg-white">
-                        <div className="w-full max-w-lg p-4 rounded-lg shadow-lg">
-                          <CardElement />
-                          <div>
-                            <button
-                              type="submit"
-                              disabled={loading}
-                              className="px-4 py-2 mt-5 font-semibold tracking-wide text-blue-700 uppercase bg-blue-100 rounded-lg focus:outline-none hover:bg-blue-200"
-                            >
-                              Subscribe & Pay
-                            </button>
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </div>
-                </section>
-              </form>
+                  <button
+                    class="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80"
+                    id="login"
+                    type="submit"
+                  >
+                    <span>Login</span>
+                  </button>
+                </form>
+              </div>
             </>
           ) : (
-            <UserData />
+            <div>Go to dashboard</div>
           )
         ) : (
           <SignInComp />

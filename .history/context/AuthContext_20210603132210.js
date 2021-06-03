@@ -27,7 +27,7 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user] = useAuthState(auth);
-  const [activeplan, setactiveplan] = useState(null);
+  const [activeplan, setactiveplan] = useState([]);
   const [loading, setloading] = useState(true);
   const [subscriptions, setSubscriptions] = useState([]);
 

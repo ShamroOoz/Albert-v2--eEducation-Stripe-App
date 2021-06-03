@@ -27,7 +27,7 @@ export const useAuth = () => {
 
 function useProvideAuth() {
   const [user] = useAuthState(auth);
-  const [activeplan, setactiveplan] = useState(null);
+  const [activeplan, setactiveplan] = useState([]);
   const [loading, setloading] = useState(true);
   const [subscriptions, setSubscriptions] = useState([]);
 
@@ -39,7 +39,7 @@ function useProvideAuth() {
       const ref = db.collection("users").doc(user.uid);
       unsubscribe = ref.onSnapshot((doc) => {
         setactiveplan(
-          doc.data()?.activePlans == null ? null : doc.data()?.activePlans
+          doc.data()?.activePlans == null ? [] : doc.data()?.activePlans
         );
         setloading(false);
       });
